@@ -1,0 +1,17 @@
+server:
+  port: 80
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+ #因为openFeign 默认等待时间为1秒钟(如果响应时间超过1秒钟会报错)  如果有业务需要 等待调用时间超过1秒钟  在这里进行设置  这样就不会报错
+ribbon:
+  #指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间
+  ReadTimeout:  5000
+  #指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000
+logging:
+  level:
+    com.atguigu.springcloud.service.PaymentFeignService: debug  #openFeign这里设置那个接口 什么级别的日志
+
