@@ -1,6 +1,6 @@
 package com.atguigu.springcloud.controller;
 
-import com.atguigu.springcloud.service.OrderHystirxService;
+import com.atguigu.springcloud.service.PaymentHystirxService;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -24,14 +24,14 @@ import javax.annotation.Resource;
 public class OrderHystirxController {
 
     @Resource
-    private OrderHystirxService orderHystirxService;
+    private PaymentHystirxService paymentHystirxService;
 
     @Value("${server.port}")
     private String serverPort;
 
     @GetMapping("/consumer/payment/hystrix/ok/{id}")
     public String paymentInfo_OK(@PathVariable("id") Integer id){
-      String result=  orderHystirxService.paymentInfo_OK(id);
+      String result=  paymentHystirxService.paymentInfo_OK(id);
         log.info("*******result:"+result);
         return result;
     }
@@ -49,7 +49,7 @@ public class OrderHystirxController {
     @GetMapping("/consumer/payment/hystrix/timeout/{id}")
     public String payementInfo_TIMEOUT(@PathVariable("id") Integer id){
         int a=10/0;
-        String result=  orderHystirxService.payementInfo_TIMEOUT(id);
+        String result=  paymentHystirxService.payementInfo_TIMEOUT(id);
         log.info("*******result:"+result);
         return result;
     }
