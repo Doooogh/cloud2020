@@ -11,6 +11,14 @@
 
     <artifactId>cloud-config-client-3355</artifactId>
     <dependencies>
+
+        <!--        添加消息总线RabbitMQ支持-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>
+
+
         <!--这个为config 的客户端-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
